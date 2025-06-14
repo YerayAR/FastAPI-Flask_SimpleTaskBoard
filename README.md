@@ -1,2 +1,32 @@
-# FastAPI_SimpleTest
-A basic FastAPI project designed for learning and testing core functionalities of FastAPI. It includes simple route management, data validation with Pydantic, and an example REST API endpoint. The project is structured for easy scalability and integration with databases, making it a great starting point for FastAPI development.
+# FastAPI Simple Test
+
+This project is a minimal FastAPI application demonstrating:
+
+- JWT authentication
+- User management with SQLAlchemy
+- Data validation with Pydantic
+- SQLite database
+- Modular architecture (models, routers, services)
+- Automatic OpenAPI documentation
+- Pytest tests
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+## Running the Application
+
+```bash
+uvicorn app.main:app --reload
+```
+
+The API documentation will be available at `http://localhost:8000/docs`.
+
+## Running Tests
+
+```bash
+pytest
+```
+
