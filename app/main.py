@@ -13,3 +13,8 @@ def on_startup():
 app.include_router(auth.router)
 app.include_router(items.router)
 
+
+@app.get("/")
+async def read_root():
+    return {"message": "Hello World"}
+
