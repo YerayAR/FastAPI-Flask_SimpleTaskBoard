@@ -3,4 +3,5 @@
 # Currently only the ``User`` model exists, but additional models could be
 # added here in the future for convenience of importing.
 from .user import User
+from .task import Task
 

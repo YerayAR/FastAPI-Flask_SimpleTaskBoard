@@ -2,15 +2,25 @@
 
 # FastAPI provides the web framework used throughout the project
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 # Import routers that expose authentication and item related endpoints
-from .routers import auth, items
+from .routers import auth, items, tasks
 
 # Database metadata and engine are required to create tables on startup
 from .database import Base, engine
 
 # Create the FastAPI application instance
 app = FastAPI()
+
+# Allow cross-origin requests so the Flask frontend can reach the API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.on_event("startup")
@@ -21,6 +31,7 @@ def on_startup() -> None:
 # Register API routers for authentication and item resources
 app.include_router(auth.router)
 app.include_router(items.router)
+app.include_router(tasks.router)
 
 
 @app.get("/")

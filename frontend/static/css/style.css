@@ -1,0 +1,24 @@
+body {
+    background-color: #0a0a0a;
+    color: #f1f1f1;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.neon {
+    color: #39ff14;
+}
+
+.card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px #39ff14;
+}
+
+.button-primary {
+    background-color: #ff007f;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
