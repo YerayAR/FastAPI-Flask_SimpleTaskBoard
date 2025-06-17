@@ -7,6 +7,7 @@ from .auth_service import (
     authenticate_user,
     get_current_user,
 )
+from . import task_service
 
 __all__ = [
     "get_db",
@@ -14,5 +15,6 @@ __all__ = [
     "create_user",
     "authenticate_user",
     "get_current_user",
+    "task_service",
 ]
 

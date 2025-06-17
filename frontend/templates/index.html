@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1 class="text-3xl neon mb-4">Cyberpunk Task Board</h1>
+<div id="notification" class="hidden mb-4 p-2 bg-blue-800 text-white"></div>
+<form id="task-form" class="mb-6">
+    <input id="title" class="p-2 mr-2 text-black" placeholder="Title" required>
+    <input id="description" class="p-2 mr-2 text-black" placeholder="Description">
+    <button class="button-primary" type="submit">Add</button>
+</form>
+<div id="tasks" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+{% endblock %}
