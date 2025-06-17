@@ -28,3 +28,6 @@ venv/
 
 # MacOS
 .DS_Store
+
+dist/
+build/

@@ -1,8 +1,6 @@
 # Cyberpunk Task Board
 
-This repository contains a small **FastAPI** backend with a **Flask** front‑end.
-The front‑end uses TailwindCSS and JavaScript to present a cyberpunk styled
-interface that interacts with the API via HTTP calls.
+This repository contains a small **FastAPI** backend with a **Flask** front‑end. The front-end uses TailwindCSS and JavaScript to present a cyberpunk styled interface that interacts with the API via HTTP calls.
 
 ## Features
 
@@ -12,43 +10,54 @@ interface that interacts with the API via HTTP calls.
 - Flask blueprint for the front‑end.
 - Pytest test suite covering the API and the Flask routes.
 
-## Installation
+## Deployment with Docker
 
-1. Create a virtual environment and install the dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. (Optional) set the environment variable `FASTAPI_URL` for the Flask app. It
-   defaults to `http://localhost:8000`.
-
-## Running the applications
-
-Start the FastAPI server:
+Ensure you have Docker and Docker Compose installed. Start the entire stack with:
 
 ```bash
-uvicorn app.main:app --reload
+chmod +x run.sh
+./run.sh
 ```
 
-In a separate terminal run the Flask front‑end:
+If Docker cannot connect to the daemon due to permission issues, run the command with `sudo` or add your user to the Docker group.
+
+Use the following command to stop the containers:
 
 ```bash
+./run.sh down
+```
+
+The Flask front‑end will be available on [http://localhost:5000](http://localhost:5000) and the FastAPI docs on [http://localhost:8000/docs](http://localhost:8000/docs).
+
+## Manual installation
+
+If you prefer running the applications without Docker:
+
+```bash
+pip install -r requirements.txt
+uvicorn app.main:app --reload &
 python -m frontend.app
 ```
 
-Open `http://localhost:5000` to see the task board. The API documentation is
-available at `http://localhost:8000/docs`.
+Set the `FASTAPI_URL` environment variable for the Flask app if the API is hosted elsewhere. It defaults to `http://localhost:8000`.
+
+## Optional executable for the Flask front‑end
+
+To build a standalone executable of the Flask app for offline use:
+
+```bash
+pip install pyinstaller
+pyinstaller --onefile -n taskboard frontend/app.py
+```
+
+The resulting binary will be located in the `dist/` directory.
 
 ## Running the tests
 
-The project includes unit and integration tests for both the API and the front
-end. Execute them with:
+Execute the unit tests with coverage using:
 
 ```bash
 pytest --cov
 ```
 
-A coverage report will be produced in the terminal. Aim for a coverage above
-90 %.
-
+A coverage report will be printed in the terminal. Aim for a coverage above 90 %.
