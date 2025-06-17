@@ -1,3 +1,5 @@
+"""Convenience imports for service layer functions."""
+
 from .auth_service import (
     get_db,
     get_user,
