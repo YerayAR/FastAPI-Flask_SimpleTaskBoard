@@ -1,44 +1,54 @@
-# FastAPI Simple Test
+# Cyberpunk Task Board
 
-This project is a minimal **FastAPI** API accompanied by a **Flask** front-end. The API demonstrates:
+This repository contains a small **FastAPI** backend with a **Flask** front‑end.
+The front‑end uses TailwindCSS and JavaScript to present a cyberpunk styled
+interface that interacts with the API via HTTP calls.
 
-- JWT authentication
-- User management with SQLAlchemy
-- Data validation with Pydantic
-- SQLite database
-- Modular architecture (models, routers, services)
-- Automatic OpenAPI documentation
-- Pytest tests
+## Features
 
-The Flask application renders HTML templates (using Jinja2, TailwindCSS and JavaScript) that consume the FastAPI service via HTTP calls.
+- JWT authentication and user registration.
+- SQLite database managed by SQLAlchemy.
+- Modular architecture with routers and services.
+- Flask blueprint for the front‑end.
+- Pytest test suite covering the API and the Flask routes.
 
 ## Installation
 
-```bash
-pip install -r requirements.txt
-```
+1. Create a virtual environment and install the dependencies:
 
-## Running the Application
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. (Optional) set the environment variable `FASTAPI_URL` for the Flask app. It
+   defaults to `http://localhost:8000`.
+
+## Running the applications
+
+Start the FastAPI server:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-### Running the Flask Front-end
-
-Set the environment variable `FASTAPI_URL` to the URL where the FastAPI app is running (default `http://localhost:8000`). Then start the Flask development server:
+In a separate terminal run the Flask front‑end:
 
 ```bash
 python -m frontend.app
 ```
 
-Open `http://localhost:5000` in your browser to see the cyberpunk task board.
+Open `http://localhost:5000` to see the task board. The API documentation is
+available at `http://localhost:8000/docs`.
 
-The API documentation will be available at `http://localhost:8000/docs`.
+## Running the tests
 
-## Running Tests
+The project includes unit and integration tests for both the API and the front
+end. Execute them with:
 
 ```bash
-pytest
+pytest --cov
 ```
+
+A coverage report will be produced in the terminal. Aim for a coverage above
+90 %.
 
