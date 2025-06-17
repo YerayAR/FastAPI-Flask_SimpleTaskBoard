@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.fastapi
+    volumes:
+      - .:/code
+    ports:
+      - '8000:8000'
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask
+    environment:
+      FASTAPI_URL: http://api:8000
+    volumes:
+      - .:/code
+    ports:
+      - '5000:5000'
+    depends_on:
+      - api
