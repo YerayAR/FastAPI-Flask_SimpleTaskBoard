@@ -1,3 +1,5 @@
+"""Entry point for running the Flask development server."""
+
 from . import create_app
 
 app = create_app()

@@ -1,3 +1,5 @@
+"""Blueprint containing the main page route."""
+
 from flask import Blueprint, render_template
 import os
 
