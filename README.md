@@ -130,4 +130,4 @@ sequenceDiagram
 4. Describe your changes clearly in the PR description.
 
 ## License & Credits
-This project is released under the MIT License. Original authorship by Yeray Alonso Reyes.
+Original authorship by Yeray Alonso Reyes.
