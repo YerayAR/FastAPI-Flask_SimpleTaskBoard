@@ -191,7 +191,7 @@ python -m frontend.app
 
 This project is open source and available under the [MIT License](LICENSE).
 
-**Created with 💜 by Yeray Alonso Reyes**
+**Created by Yeray Alonso Reyes**
 
 ---
 
