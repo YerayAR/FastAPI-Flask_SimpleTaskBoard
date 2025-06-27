@@ -1,133 +1,198 @@
-# Cyberpunk Task Board
+# 🚀 Cyberpunk Task Board
 
-## Project Overview
-Cyberpunk Task Board is a minimal example application combining a **FastAPI** backend with a **Flask** front‑end. It demonstrates authentication with JWT, basic task management and a simple cyberpunk themed UI built with TailwindCSS. The project aims to be a reference for developers who want to understand how to integrate FastAPI services with a separate Flask user interface and deploy everything using Docker Compose.
+> **A futuristic task management application combining FastAPI backend with Flask frontend**
 
-## Features
-- User registration and login with JWT authentication
-- SQLite database handled by SQLAlchemy ORM
-- CRUD API for tasks
-- Flask UI consuming the REST API via JavaScript
-- Dockerfiles and Docker Compose configuration
-- Pytest suite covering API and front‑end routes
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green.svg)](https://fastapi.tiangolo.com/)
+[![Flask](https://img.shields.io/badge/Flask-Latest-red.svg)](https://flask.palletsprojects.com/)
 
-## Technology Stack
-| Technology | Role |
-|------------|------|
-| **Python 3.11** | Programming language used throughout the project |
-| **FastAPI** | Backend framework providing REST endpoints |
-| **Flask** | Front‑end framework serving HTML templates and static files |
-| **SQLAlchemy + SQLite** | ORM and lightweight database to persist users and tasks |
-| **Pydantic** | Data validation and serialization layer |
-| **Passlib & python-jose** | Password hashing and JWT token creation |
-| **TailwindCSS** | Styling for the cyberpunk interface |
-| **Docker & Docker Compose** | Containerization and orchestration of the services |
-| **Pytest** | Test framework for unit and integration tests |
+## ⚡ Quick Start
 
-## Architecture & Folder Structure
+### 🎯 One-Command Setup (Recommended)
+
+**Windows:**
+```bash
+python start.py
+```
+*OR double-click `start.bat`*
+
+**macOS/Linux:**
+```bash
+python3 start.py
+```
+*OR run `./start.sh`*
+
+### 🌟 That's it! 
+The application will:
+- ✅ Automatically create a virtual environment
+- ✅ Install all dependencies
+- ✅ Start both servers (FastAPI + Flask)
+- ✅ Open your browser to http://localhost:5000
+
+---
+
+## 🎮 What You'll Get
+
+- **🎯 Task Management**: Create, view, and delete tasks
+- **🔐 Authentication**: Secure JWT-based login system
+- **🎨 Cyberpunk UI**: Futuristic interface with TailwindCSS
+- **📱 Responsive**: Works on desktop and mobile
+- **⚡ Real-time**: Automatic updates and live reload
+
+## 🛠️ Technology Stack
+| Component | Technology |
+|-----------|------------|
+| **Backend** | FastAPI + SQLAlchemy + SQLite |
+| **Frontend** | Flask + Jinja2 + TailwindCSS |
+| **Auth** | JWT + Passlib (bcrypt) |
+| **Testing** | Pytest with coverage |
+| **Deployment** | Docker + Docker Compose |
+
+## 📁 Project Structure
 
 ```
-.
-├── app/                 # FastAPI backend
-│   ├── core/           # Security utilities
-│   ├── models/         # SQLAlchemy models
-│   ├── routers/        # API endpoints
-│   ├── schemas/        # Pydantic schemas
-│   └── services/       # Business logic
-├── frontend/            # Flask front-end
-│   ├── routes/         # Blueprints
-│   ├── static/         # CSS/JS assets
-│   └── templates/      # Jinja2 templates
-├── tests/               # Pytest suites
-├── Dockerfile.fastapi   # Image for the API service
-├── Dockerfile.flask     # Image for the front-end service
-├── docker-compose.yml   # Multi-container definition
-└── requirements.txt     # Python dependencies
+📦 cyberpunk-task-board/
+├── 🚀 start.py              # One-command startup script
+├── 🪟 start.bat             # Windows quick start
+├── 🐧 start.sh              # Unix/Linux/macOS quick start
+├── 📋 requirements.txt      # Python dependencies
+├── 🐳 docker-compose.yml    # Docker setup
+├── 📖 README.md            # This file
+├── 🔧 app/                 # FastAPI Backend
+│   ├── 🏠 main.py          # Application entry point
+│   ├── 🔐 core/            # Security & auth utilities
+│   ├── 💾 models/          # Database models
+│   ├── 🛣️ routers/         # API endpoints
+│   └── 📊 schemas/         # Data validation
+├── 🎨 frontend/            # Flask Frontend
+│   ├── 🌐 app.py           # Flask entry point
+│   ├── 🛣️ routes/          # Web routes
+│   ├── 📄 templates/       # HTML templates
+│   └── 🎭 static/          # CSS, JS, images
+└── 🧪 tests/               # Test suites
 ```
 
-### Component Diagram
-```mermaid
-graph TD
-    A[Browser] -->|HTTP| B(Flask Frontend)
-    B -->|REST calls| C(FastAPI Backend)
-    C --> D[SQLite Database]
+## 🔗 API Endpoints
+
+### Authentication
+- **POST** `/register` - Create new user account
+- **POST** `/token` - Login and get JWT token
+
+### Tasks
+- **GET** `/tasks/` - List all tasks
+- **POST** `/tasks/` - Create new task
+- **DELETE** `/tasks/{task_id}` - Delete task
+
+### User
+- **GET** `/items/me` - Get current user info
+- **GET** `/` - Health check
+
+**🔍 Interactive API Documentation**: http://localhost:8000/docs
+
+---
+
+## 🐳 Alternative: Docker Setup
+
+If you prefer Docker:
+
+```bash
+# Start everything with Docker
+docker compose up --build
+
+# Stop everything
+docker compose down
 ```
 
-## Endpoints (API Reference)
-| Method | Path | Description |
-|--------|------|-------------|
-| **GET** | `/` | Health check |
-| **POST** | `/register` | Create new user |
-| **POST** | `/token` | Obtain JWT token |
-| **GET** | `/items/me` | Retrieve current user information |
-| **GET** | `/tasks/` | List all tasks |
-| **POST** | `/tasks/` | Create a new task |
-| **DELETE** | `/tasks/{task_id}` | Delete a task |
+**Access Points:**
+- 🌐 **Frontend**: http://localhost:5000
+- 🔧 **API**: http://localhost:8000
+- 📚 **API Docs**: http://localhost:8000/docs
 
-## Setup & Installation
+---
 
-### Local Development
-1. Install Python 3.11 and `pip`.
-2. Create a virtual environment and install requirements:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   ```
-3. Start the FastAPI server:
-   ```bash
-   uvicorn app.main:app --reload
-   ```
-4. In another terminal, start the Flask server:
-   ```bash
-   export FASTAPI_URL=http://localhost:8000
-   python -m frontend.app
-   ```
+## 🧪 Testing
 
-### Docker
-1. Build the images and start the stack:
-   ```bash
-   docker compose up --build
-   ```
-   The API will be available on `http://localhost:8000` and the front‑end on `http://localhost:5000`.
-2. Stop the containers with:
-   ```bash
-   docker compose down
-   ```
+```bash
+# Run all tests with coverage
+python start.py && pytest --cov
 
-Environment variable **`FASTAPI_URL`** is used by the Flask app to know where the API is reachable. Docker Compose sets this automatically.
-
-## Running the Project
-- Execute tests with coverage:
-  ```bash
-  pytest --cov
-  ```
-- Build the API Docker image manually:
-  ```bash
-  docker build -t cyberpunk-api -f Dockerfile.fastapi .
-  ```
-- Run the Flask front‑end standalone:
-  ```bash
-  FASTAPI_URL=http://localhost:8000 python -m frontend.app
-  ```
-
-## Screenshots or Diagrams
-Below is a simplified flow of a user creating a task.
-```mermaid
-sequenceDiagram
-    actor User
-    User->>Flask: Submit new task form
-    Flask->>FastAPI: POST /tasks/
-    FastAPI->>SQLite: Insert task
-    FastAPI-->>Flask: Task created
-    Flask-->>User: Notification
+# Or if already set up:
+pytest --cov
 ```
 
-## Contributing
-1. Fork the repository and create your feature branch.
-2. Commit your changes and open a pull request against `main`.
-3. Ensure `pytest` passes before submitting the PR.
-4. Describe your changes clearly in the PR description.
+---
 
-## License & Credits
-Original authorship by Yeray Alonso Reyes.
+## 🛠️ Manual Setup (Advanced Users)
+
+If you prefer manual setup:
+
+**1. Setup Environment:**
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+**2. Start FastAPI:**
+```bash
+uvicorn app.main:app --reload
+```
+
+**3. Start Flask (in new terminal):**
+```bash
+export FASTAPI_URL=http://localhost:8000  # Windows: set FASTAPI_URL=...
+python -m frontend.app
+```
+
+---
+
+## 🎯 Features
+
+- ✅ **User Registration & Login**
+- ✅ **JWT Authentication**
+- ✅ **Task CRUD Operations**
+- ✅ **Responsive Cyberpunk UI**
+- ✅ **Real-time Updates**
+- ✅ **SQLite Database**
+- ✅ **Docker Support**
+- ✅ **Comprehensive Tests**
+- ✅ **API Documentation**
+
+---
+
+## 🔧 Troubleshooting
+
+**❓ Application won't start?**
+- Ensure Python 3.8+ is installed
+- Check if ports 5000 and 8000 are available
+- Try: `python --version` and `pip --version`
+
+**❓ "Module not found" errors?**
+- The startup script handles this automatically
+- Manual fix: `pip install -r requirements.txt`
+
+**❓ Can't access in browser?**
+- Check if firewall is blocking ports 5000/8000
+- Try http://127.0.0.1:5000 instead of localhost
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+**Created with 💜 by Yeray Alonso Reyes**
+
+---
+
+### 🌟 Star this repo if you found it helpful!

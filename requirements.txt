@@ -4,7 +4,9 @@ SQLAlchemy
 pydantic
 passlib[bcrypt]
 python-jose
+python-multipart
 pytest
 httpx
 Flask
 requests
+pytest-cov
