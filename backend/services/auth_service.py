@@ -6,8 +6,8 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError
 
 from .. import models, schemas
-from ..database import SessionLocal
-from ..core import security
+from ..config.database import SessionLocal
+from ..utils import security
 
 # OAuth2 scheme used by FastAPI to retrieve the token from request headers
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")

@@ -4,8 +4,8 @@ import os
 import pytest
 from fastapi.testclient import TestClient
 
-from app.main import app
-from app.database import Base, engine
+from backend.main import app
+from backend.config.database import Base, engine
 
 # Create a test client that will call into our FastAPI app
 client = TestClient(app)

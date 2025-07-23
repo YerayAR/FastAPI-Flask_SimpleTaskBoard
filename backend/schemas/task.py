@@ -1,3 +1,4 @@
+"""Esquemas Pydantic para la entidad Task."""
 from pydantic import BaseModel
 from typing import Optional
 

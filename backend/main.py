@@ -4,11 +4,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Import routers that expose authentication and item related endpoints
-from .routers import auth, items, tasks
+# Import controllers that expose authentication and item related endpoints
+from .controllers import auth, items, tasks
 
 # Database metadata and engine are required to create tables on startup
-from .database import Base, engine
+from .config.database import Base, engine
 
 # Create the FastAPI application instance
 app = FastAPI()

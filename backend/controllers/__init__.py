@@ -3,6 +3,6 @@
 # Individual router modules implementing API endpoints
 from . import auth, items, tasks
 
-# Allow ``from app.routers import auth`` style imports
+# Allow ``from backend.controllers import auth`` style imports
 __all__ = ["auth", "items", "tasks"]
 

@@ -4,7 +4,7 @@
 from sqlalchemy import Column, Integer, String
 
 # Base class imported from the application's database module
-from ..database import Base
+from ..config.database import Base
 
 class User(Base):
     """Represents a registered user in the system."""
