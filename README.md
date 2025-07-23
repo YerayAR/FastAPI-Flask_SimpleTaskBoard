@@ -12,15 +12,15 @@
 
 **Windows:**
 ```bash
-python start.py
+python scripts/start.py
 ```
-*OR double-click `start.bat`*
+*OR double-click `scripts/start.bat`*
 
 **macOS/Linux:**
 ```bash
-python3 start.py
+python3 scripts/start.py
 ```
-*OR run `./start.sh`*
+*OR run `scripts/start.sh`*
 
 ### 🌟 That's it! 
 The application will:
@@ -50,27 +50,31 @@ The application will:
 
 ## 📁 Project Structure
 
-```
+``` 
 📦 cyberpunk-task-board/
-├── 🚀 start.py              # One-command startup script
-├── 🪟 start.bat             # Windows quick start
-├── 🐧 start.sh              # Unix/Linux/macOS quick start
-├── 📋 requirements.txt      # Python dependencies
-├── 🐳 docker-compose.yml    # Docker setup
-├── 📖 README.md            # This file
-├── 🔧 app/                 # FastAPI Backend
-│   ├── 🏠 main.py          # Application entry point
-│   ├── 🔐 core/            # Security & auth utilities
-│   ├── 💾 models/          # Database models
-│   ├── 🛣️ routers/         # API endpoints
-│   └── 📊 schemas/         # Data validation
-├── 🎨 frontend/            # Flask Frontend
-│   ├── 🌐 app.py           # Flask entry point
-│   ├── 🛣️ routes/          # Web routes
-│   ├── 📄 templates/       # HTML templates
-│   └── 🎭 static/          # CSS, JS, images
-└── 🧪 tests/               # Test suites
-```
+├── scripts/               # Utilidades de arranque
+│   ├── start.py           # Script universal
+│   ├── start.sh           # Linux/macOS
+│   ├── start.bat          # Windows
+│   ├── start_fastapi.bat  # API en Windows
+│   └── start_flask.bat    # Frontend en Windows
+├── backend/              # Backend FastAPI
+│   ├── main.py            # Punto de entrada
+│   ├── config/            # Configuración (DB, etc.)
+│   ├── controllers/       # Endpoints HTTP
+│   ├── models/            # Modelos ORM
+│   ├── schemas/           # Esquemas de validación
+│   ├── services/          # Lógica de negocio
+│   └── utils/             # Funciones auxiliares
+├── frontend/             # Frontend Flask
+│   ├── app.py             # Entrada Flask
+│   ├── routes/            # Rutas web
+│   ├── templates/         # Plantillas HTML
+│   └── static/            # Archivos estáticos
+├── tests/                 # Pruebas automatizadas
+├── docker-compose.yml     # Orquestación con Docker
+└── requirements.txt       # Dependencias Python
+``` 
 
 ## 🔗 API Endpoints
 
@@ -114,7 +118,7 @@ docker compose down
 
 ```bash
 # Run all tests with coverage
-python start.py && pytest --cov
+python scripts/start.py && pytest --cov
 
 # Or if already set up:
 pytest --cov
@@ -135,7 +139,7 @@ pip install -r requirements.txt
 
 **2. Start FastAPI:**
 ```bash
-uvicorn app.main:app --reload
+uvicorn backend.main:app --reload
 ```
 
 **3. Start Flask (in new terminal):**

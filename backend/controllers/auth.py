@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 
 from .. import schemas
 from ..services import auth_service
-from ..core import security
+from ..utils import security
 
 # Router without a prefix as endpoints are at the root (e.g. /register)
 router = APIRouter(prefix="", tags=["auth"])

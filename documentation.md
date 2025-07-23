@@ -18,7 +18,7 @@ La estructura sigue un pequeño patrón modular separando modelos, routers y ser
 
 ```
 .
-├── app/                 # Backend FastAPI
+├── backend/                 # Backend FastAPI
 ├── frontend/            # Front‑end Flask
 ├── Dockerfile.fastapi
 ├── Dockerfile.flask
@@ -27,7 +27,7 @@ La estructura sigue un pequeño patrón modular separando modelos, routers y ser
 ```
 
 ```
-app/
+backend/
 ├── core/
 │   └── security.py
 ├── database.py
@@ -53,47 +53,47 @@ app/
 
 ### Descripción de archivos y carpetas
 
-- **`app/main.py`**
+- **`backend/main.py`**
   - Punto de inicio de la aplicación FastAPI.
   - Incluye los routers y crea las tablas de la base de datos al iniciar.
   - Depende de `routers` y de `database`.
 
-- **`app/database.py`**
+- **`backend/database.py`**
   - Configura la conexión con SQLite y expone `SessionLocal` y la clase base `Base`.
   - Es utilizada por los servicios y por `main.py` para inicializar la base de datos.
 
-- **`app/core/security.py`**
+- **`backend/core/security.py`**
   - Funciones de seguridad: hashing de contraseñas y generación/verificación de tokens JWT.
   - Utiliza `passlib` y `python-jose`.
 
-- **`app/models/user.py`**
+- **`backend/models/user.py`**
   - Modelo ORM de SQLAlchemy que representa la tabla `users`.
   - Importado por los servicios para realizar operaciones de base de datos.
-- **`app/models/task.py`**
+- **`backend/models/task.py`**
   - Modelo ORM que almacena tareas simples para la demo.
 
-- **`app/routers/auth.py`**
+- **`backend/routers/auth.py`**
   - Endpoints para registro y login de usuarios.
   - Depende del servicio `auth_service` y de los esquemas de `schemas`.
 
-- **`app/routers/items.py`**
+- **`backend/routers/items.py`**
   - Endpoint protegido que devuelve el usuario autenticado.
   - Utiliza `get_current_user` del servicio de autenticación.
 
-- **`app/routers/tasks.py`**
+- **`backend/routers/tasks.py`**
   - Endpoints para crear y listar tareas de ejemplo.
   - Depende del servicio `task_service`.
 
-- **`app/schemas/user.py`**
+- **`backend/schemas/user.py`**
   - Esquemas Pydantic para entrada y salida de datos de usuario y tokens.
-- **`app/schemas/task.py`**
+- **`backend/schemas/task.py`**
   - Define los modelos de datos para las tareas.
 
-- **`app/services/auth_service.py`**
+- **`backend/services/auth_service.py`**
   - Conjunto de funciones de negocio para gestionar usuarios y autenticación.
   - Interactúa con la base de datos y con el módulo `security`.
 
-- **`app/services/task_service.py`**
+- **`backend/services/task_service.py`**
   - Operaciones CRUD de tareas utilizadas por el router de tareas.
 
 - **`tests/test_auth.py`**

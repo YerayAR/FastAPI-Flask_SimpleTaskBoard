@@ -59,7 +59,7 @@ def start_fastapi_server(python_path):
         env = os.environ.copy()
         subprocess.run([
             str(python_path), "-m", "uvicorn", 
-            "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"
+            "backend.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"
         ], env=env)
     
     thread = threading.Thread(target=run_fastapi, daemon=True)
